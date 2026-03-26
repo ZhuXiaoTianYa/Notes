@@ -25,3 +25,5 @@ Widget::Widget(QWidget *parent)
 ![](assets/Hello%20World/file-20260326232502667.png)
 qlabel.h是Qt的上古写法，后来响应C++<cstdio>风格有了新的QLabel写法
 
+
+![](assets/Hello%20World/file-20260326232722946.png)
