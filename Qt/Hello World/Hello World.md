@@ -22,3 +22,6 @@ Widget::Widget(QWidget *parent)
 }
 ```
 一般通过代码来构建界面的时候，通常会把构造界面的代码放到Widget/MainWindow的构造函数中，在Widget w;中执行
+![](assets/Hello%20World/file-20260326232502667.png)
+qlabel.h是Qt的上古写法，后来响应C++<cstdio>风格有了新的QLabel写法
+
