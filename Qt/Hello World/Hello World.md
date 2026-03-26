@@ -61,6 +61,9 @@ QString对应的头文件，已经被很多Qt内置类间接包含
 
 ![](assets/Hello%20World/file-20260326233637865.png)
 
+![](assets/Hello%20World/file-20260326235101096.jpg)
+![](assets/Hello%20World/file-20260326235109116.png)
+
 
 上述代码在Qt中不会产生内存泄漏，label对象在合适的时候会被析构释放，虽然没有手动写delete
 
