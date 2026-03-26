@@ -29,3 +29,29 @@
 
 数学中的坐标系为右手坐标系（右手系）
 计算机中的坐标系为左手坐标系（左手系）
+
+
+```C++
+#include "widget.h"
+#include "ui_widget.h"
+#include <QPushButton>
+Widget::Widget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::Widget)
+{
+    ui->setupUi(this);
+    QPushButton* button=new QPushButton(this);
+    button->setText("hello world");
+    button->move(200,100);
+    this->move(100,0);
+}
+
+Widget::~Widget()
+{
+    delete ui;
+}
+
+```
+![](assets/Qt变量命名风格/file-20260327020228035.png)
+![](assets/Qt变量命名风格/file-20260327020018143.png)
+可以通过move函数改变位置，这里要注意，最上侧的白栏是系统自动生成的，不属于Widget范围内，坐标后面的单位是像素。可以通过this指针改变窗口的位置
