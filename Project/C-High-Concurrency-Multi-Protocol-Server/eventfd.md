@@ -17,7 +17,7 @@ eventfd本质就是在内核中管理一个计数器
 	    返回值：返回一个文件描述符用于操作
 ```
 eventfd也是通过read/write/close进行操作的
-注意：read&write进行IO的时候数据只能是一个8字节数据
+注意：read&write进行IO的时候数据只能是一个8字节数据.
 ```C++
 #include <sys/eventfd.h>
 int main()
