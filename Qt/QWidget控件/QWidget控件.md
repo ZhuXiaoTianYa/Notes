@@ -76,6 +76,48 @@ void Widget::handle()
 
 ![](assets/QWidget控件/file-20260401084347516.png)
 
+```C++
+#include "widget.h"
+#include "ui_widget.h"
+#include <QPushButton>
+#include <QDebug>
+
+Widget::Widget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::Widget)
+{
+    ui->setupUi(this);
+
+}
+
+Widget::~Widget()
+{
+    delete ui;
+}
+
+
+
+void Widget::on_pushButton_enable_clicked()
+{
+    bool status=ui->pushButton->isEnabled();
+    if(status)
+    {
+        ui->pushButton->setEnabled(false);
+    }
+    else
+    {
+        ui->pushButton->setEnabled(true);
+    }
+}
+
+
+void Widget::on_pushButton_clicked()
+{
+    qDebug("执行");
+}
+
+
+```
 在同一个界面中，要求不同的控件objectName必须是不同的，后续就可以通过ui->objectName获取控件对象了，
 元编程，Qt会根据ui文件，生成一个ui_widget.h文件，生成的过程中就会感知到，界面上有哪些控件的objectName
 当前自动生成的objectName的规律是控件类型+下划线+数字。但用数字的方式命名，显然不是很好的编程习惯，所以可以根据需要改为其他名字，如pushButton_enable
