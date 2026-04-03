@@ -121,3 +121,6 @@ void Widget::on_pushButton_clicked()
 在同一个界面中，要求不同的控件objectName必须是不同的，后续就可以通过ui->objectName获取控件对象了，
 元编程，Qt会根据ui文件，生成一个ui_widget.h文件，生成的过程中就会感知到，界面上有哪些控件的objectName
 当前自动生成的objectName的规律是控件类型+下划线+数字。但用数字的方式命名，显然不是很好的编程习惯，所以可以根据需要改为其他名字，如pushButton_enable
+
+### geometry
+geometry的含义是几何，可以把geometry视为x,y,width,height四个属性的统称，也就是当前控件的位置和尺寸
