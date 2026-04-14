@@ -35,3 +35,38 @@ cmake --version
 ![](assets/Cmake简单使用/file-20260414225938435.png)
 
 
+## 3. 入门样例 - Hello-world工程
+创建hello-world 目录， 并在其目录下创建main.cpp源文件和CMakeLists.txt文件
+```Shell
+zhutian@VM-0-10-ubuntu:~/repositories/gitee/cpp-wechat-im-microservice/example/cmake$ tree
+.
+├── CMakeList.txt
+└── main.cc
+
+1 directory, 2 files
+```
+ 
+ ```C++
+ #include <iostream>
+
+using namespace std;
+
+int main()
+
+{
+    std::cout << "hello world" << std::endl;
+    return 0;
+}
+ ```
+  CMakeList.txt如下
+  ```
+# 声明所需要的cmake版本
+cmake_minimum_required(VERSION 3.0.0)
+# 定义项目工程名称(但是不是说生成的可执行程序就一定要叫这个)
+project(test)
+# 设置生成目标(第一个是生成的程序名称，后面为所依赖的cpp文件)
+add_executable(main main.cc)
+  ```
+  > 与makefile不同，CMakeList.txt中的CML需要大写，进行文件匹配
+  
+  
