@@ -108,10 +108,10 @@ zhutian@VM-0-10-ubuntu:~/repositories/gitee/cpp-wechat-im-microservice/example/c
 - 生成的makefile是根据cmake的优化后生成的
 - make就可以编译了
 - 我们一般在cmake构建的时候，不会直接在我们的CMakeLists.txt所在目录去编译，这是因为编译的过程中会产生很多中间临时文件，所以一般会建立一个临时文件夹，如Build，在文件夹中cmake .. ，这样在进行清理的时候就可以直接删除这个文件夹
+- cmake语句后面不能加; ,加了反而是报错
 
-  
-  ## 4.常见的cmake选项
-  ### 设置cmake所需版本号
+## 4.常见的cmake选项
+### 设置cmake所需版本号
 ```
   cmake_minimum_required(VERSION 3.1.3) 
 ```
@@ -129,3 +129,19 @@ zhutian@VM-0-10-ubuntu:~/repositories/gitee/cpp-wechat-im-microservice/example/c
 ```
   set(CMAKE_CXX_STANDARD 17)
 ```
+### 列表定义添加数据
+```
+set(variable_name "") 
+list(APPEND variable_name content)
+
+set(src_files "")
+list(append src_file main.cc test.cc)
+```
+### 预定义变量
+
+| 预定义变量名称                  | 备注                  |
+| ------------------------ | ------------------- |
+| CMAKE_CXX_STANDARD       | c++ 特性标准            |
+| CMAKE_CURRENT_BINARY_DIR | cmake 执行命令时所在的工作路径  |
+| CMAKE_CURRENT_SOURCE_DIR | CMakeLists.txt 所在目录 |
+| CMAKE_INSTALL_PREFIX     | 默认安装路径              |
