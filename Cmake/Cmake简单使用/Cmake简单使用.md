@@ -208,3 +208,38 @@ foreach(val vals)
 endforeach()
 # 注意要用endforeach() 结尾
 ```
+
+### 执行外部指令
+
+```
+add_custom_command(
+	PRE_BUILD     表示在所有其他步骤之前执行自定义命令 
+	COMMAND       要执行的指令名称         
+	ARGS          要执行的指令运行参数选项  
+	DEPENDS       指定命令的依赖项         
+	OUTPUT        指定要生成的目标名称      
+	COMMENT       执行命令时要打印的内容    
+)
+```
+**指令参数说明**
+
+| 参数          | 说明                               |
+| ----------- | -------------------------------- |
+| `PRE_BUILD` | 表示在所有其他步骤之前执行自定义命令（也有在编译时执行的命令等） |
+| `COMMAND`   | 要执行的指令名称                         |
+| `ARGS`      | 要执行的指令运行参数选项                     |
+| `DEPENDS`   | 指定命令的依赖项(如需要有什么文件)               |
+| `OUTPUT`    | 指定要生成的目标名称                       |
+| `COMMENT`   | 执行命令时要打印的内容                      |
+
+### 添加嵌套子cmake目录
+```
+add_subdirectory(dir)
+# 比如我们一个项目有多个自程序要编译，他们各自有自己的cmake，我们可以用这个添加其他子cmake的路径，进行编译
+```
+
+### 设置安装路径
+```
+INSTALL(TARGETS ${target_name} RUNTIME DESTINATION bin)
+```
+
