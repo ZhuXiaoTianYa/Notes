@@ -125,7 +125,7 @@ zhutian@VM-0-10-ubuntu:~/repositories/gitee/cpp-wechat-im-microservice/example/c
   变量为空给"" 即可
   set(target "main")
 ```
-###  设置C++特性标准
+### 设置C++特性标准
 ```
   set(CMAKE_CXX_STANDARD 17)
 ```
