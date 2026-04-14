@@ -67,6 +67,65 @@ project(test)
 # 设置生成目标(第一个是生成的程序名称，后面为所依赖的cpp文件)
 add_executable(main main.cc)
   ```
-  > 与makefile不同，CMakeList.txt中的CML需要大写，进行文件匹配
+  > 与makefile不同，CMakeLists.txt中的CML需要大写，进行文件匹配
+
+```
+zhutian@VM-0-10-ubuntu:~/repositories/gitee/cpp-wechat-im-microservice/example/cmake$ mkdir build&&cd build
+zhutian@VM-0-10-ubuntu:~/repositories/gitee/cpp-wechat-im-microservice/example/cmake/build$ cmake ..
+CMake Deprecation Warning at CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (1.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/example/cmake/build
+zhutian@VM-0-10-ubuntu:~/repositories/gitee/cpp-wechat-im-microservice/example/cmake/build$ ls
+CMakeCache.txt  CMakeFiles  cmake_install.cmake  Makefile
+zhutian@VM-0-10-ubuntu:~/repositories/gitee/cpp-wechat-im-microservice/example/cmake/build$ make
+[ 50%] Building CXX object CMakeFiles/main.dir/main.cc.o
+[100%] Linking CXX executable main
+[100%] Built target main
+```
+
+- cmake .. 后面跟着的是CMakeLists.txt的所在路径
+- 在进行简单的检测后生成makefile文件
+- 生成的makefile是根据cmake的优化后生成的
+- make就可以编译了
+- 我们一般在cmake构建的时候，不会直接在我们的CMakeLists.txt所在目录去编译，这是因为编译的过程中会产生很多中间临时文件，所以一般会建立一个临时文件夹，如Build，在文件夹中cmake .. ，这样在进行清理的时候就可以直接删除这个文件夹
+
   
-  
+  ## 4.常见的cmake选项
+  ### 设置cmake所需版本号
+```
+  cmake_minimum_required(VERSION 3.1.3) 
+```
+### 设置项目工程名称 
+```
+  CMake project(name) 
+```
+### 普通变量定义及内容设置 
+```
+  set(variable content1 content2 ...) 
+  变量为空给"" 即可
+  set(target "main")
+```
+###  设置C++特性标准
+```
+  set(CMAKE_CXX_STANDARD 17)
+```
