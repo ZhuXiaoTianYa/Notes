@@ -148,4 +148,47 @@ list(append src_file main.cc test.cc)
 ### 字符串内容替换 
 ```
 string(REPLACE ".old" ".new" dest src)
+
+set(src_files "")
+list(append src_file main.cc test.cc)
+set(obj_file "")
+string(REPLACE ".cc" ".o" obj_file ${src_file})
+# ${变量名} 就是引用变量中的值
+```
+
+### 添加头文件路径 
+```
+include_directories(path)
+
+# 我们一般不会写include_directories("../test/") 这样的，因为这样的相对路径的起始位置就是在执行命令的地方，这样就很容易不对，我们一般用CMAKE_CURRENT_BINARY_DIR或CMAKE_CURRENT_SOURCE_DIR这样的预定义变量作为相对路径起始位置
+```
+
+### 添加链接库
+```
+target_link_libraries(target lib1 lib2 ...)
+
+target_link_libraries(main -lspdlog -lfmt)
+# 准确说这里添加的是动态库,target 是可执行程序的名称，后面库在添加的时候可以加-l 也可以不加，cmake会自己补上
+```
+
+### 添加生成目标 
+```
+add_executable(target srcfiles1 srcfile2 ...)
+
+add_executable(main main.cc)
+# 通常这个要放在target_link_libraries前面，先添加生成目标
+```
+
+### 错误或提示打印
+```
+message(FATAL_ERROR/STATUS content)
+
+message(STATUS "普通提示")
+message(FATAL_ERROR "致命错误--会导致cmake执行退出")
+# cmake过程中可以先检测有没有一些库，针对有没有可以打印提示
+```
+
+### 查找源码文件
+```
+aux_source_directory(< dir > < variable >)
 ```
