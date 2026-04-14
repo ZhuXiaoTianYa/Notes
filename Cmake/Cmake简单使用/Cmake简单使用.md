@@ -145,3 +145,7 @@ list(append src_file main.cc test.cc)
 | CMAKE_CURRENT_BINARY_DIR | cmake 执行命令时所在的工作路径  |
 | CMAKE_CURRENT_SOURCE_DIR | CMakeLists.txt 所在目录 |
 | CMAKE_INSTALL_PREFIX     | 默认安装路径              |
+### 字符串内容替换 
+```
+string(REPLACE ".old" ".new" dest src)
+```
