@@ -191,4 +191,20 @@ message(FATAL_ERROR "致命错误--会导致cmake执行退出")
 ### 查找源码文件
 ```
 aux_source_directory(< dir > < variable >)
+
+# 源码文件 .cc .c .cpp ... 将目标文件夹下所有的源码文件放入变量中
+set(src_file "")
+aux_source_directory(src_dir src_file)
+```
+### 判断文件是否存在 
+```
+if (NOT EXISTS file) 
+endif() 
+# file可以是一个变量，用变量中的文件名，注意要用endif() 结尾
+```
+### 循环遍历 
+```
+foreach(val vals) 
+endforeach()
+# 注意要用endforeach() 结尾
 ```
