@@ -134,3 +134,13 @@ geometry的含义是几何，可以把geometry视为x,y,width,height四个属性
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
 | `geometry()`                                                                   | 获取到控件的位置和尺寸。返回结果是一个 QRect, 包含了 x, y, width, height. 其中 x,y 是左上角的坐标. |
 | `setGeometry(QRect)`<br><br>`setGeometry(int x, int y, int width, int height)` | 设置控件的位置和尺寸。可以直接设置一个 QRect, 也可以分四个属性单独设置.                            |
+
+**代码示例：控制按钮的位置**
+
+在界面中拖五个按钮.
+五个按钮的 objectName 分别为`pushButton_target`，`pushButton_up`，`pushButton_down`，`pushButton_left`，`pushButton_right`
+
+五个按钮的初始位置和大小都随意.
+
+
+![](assets/QWidget控件/file-20260423001637085.png)
