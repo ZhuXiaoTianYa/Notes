@@ -142,5 +142,70 @@ geometry的含义是几何，可以把geometry视为x,y,width,height四个属性
 
 五个按钮的初始位置和大小都随意.
 
+```C++
+// widget.cpp
+#include "widget.h"
+#include "ui_widget.h"
 
-![](assets/QWidget控件/file-20260423001637085.png)
+Widget::Widget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::Widget)
+{
+    ui->setupUi(this);
+}
+
+Widget::~Widget()
+{
+    delete ui;
+}
+
+void Widget::on_pushButton_up_clicked()
+{
+    QRect rect=ui->pushButton->geometry();
+    qDebug()<<rect;
+    rect.setY(rect.y()-5);
+    ui->pushButton->setGeometry(rect);
+}
+
+
+void Widget::on_pushButton_left_clicked()
+{
+    QRect rect=ui->pushButton->geometry();
+    qDebug()<<rect;
+    rect.setX(rect.x()-5);
+    ui->pushButton->setGeometry(rect);
+}
+
+
+void Widget::on_pushButton_right_clicked()
+{
+    QRect rect=ui->pushButton->geometry();
+    qDebug()<<rect;
+    rect.setX(rect.x()+5);
+    ui->pushButton->setGeometry(rect);
+}
+
+
+
+void Widget::on_pushButton_down_clicked()
+{
+    QRect rect=ui->pushButton->geometry();
+    qDebug()<<rect;
+    rect.setY(rect.y()+5);
+    ui->pushButton->setGeometry(rect);
+}
+
+
+```
+![697](assets/QWidget控件/file-20260423001637085.png)![](assets/QWidget控件/file-20260423002617742.png)
+
+
+运行程序，可以看到，按下下方的四个按钮，就会控制 target 的左上角的位置。对应的按钮整个尺寸也会发生改变。
+
+上述代码中我们是直接设置的 QRect 中的 x, y。实际上 QRect 内部是存储了左上和右下两个点的坐标，再通过这两个点的坐标差值计算长宽。
+
+单纯修改左上坐标就会引起整个矩形的长宽发生改变。
+
+我们也可以通过代码发现，Qt中的qDebug对大多数Qt的内置类型都做了输出的重载，可以直接打印出QRect的数值
+
+而如果我们想要整个按钮移动可以用以下方式
