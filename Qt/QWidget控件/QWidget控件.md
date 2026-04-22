@@ -308,3 +308,50 @@ void Widget::on_pushButton_reject_clicked()
 
 ![](assets/QWidget控件/file-20260423004700806.png)这样就能实现，当点击按钮时，按钮移动
 
+
+```C++
+// widget.cpp
+#include "widget.h"
+#include "ui_widget.h"
+
+Widget::Widget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::Widget)
+{
+    ui->setupUi(this);
+    srand(time(nullptr));
+}
+
+Widget::~Widget()
+{
+    delete ui;
+}
+
+
+void Widget::on_pushButton_accept_pressed()
+{
+    ui->label->setText("mua~~~");
+}
+
+
+void Widget::on_pushButton_reject_pressed()
+{
+    int width=this->geometry().width();
+    int height=this->geometry().height();
+    ui->pushButton_reject->move(rand()%width,rand()%height);
+}
+
+
+```
+
+![](assets/QWidget控件/file-20260423004944230.png)
+而如果采用pressed，则时按下，还没松开就移动
+
+
+由此可见，按钮移动可以setGeometry 也可以 move
+
+上述代码使用的是 pressed，鼠标按下事件。如果使用 `mouseMoveEvent`，会更狠一些，只要鼠标移动过来，按钮就跑了。
+
+对应的代码更麻烦一些（需要自定义类继承自 QPushButton，重写 `mouseMoveEvent` 方法）。此处暂时不展开。
+
+
