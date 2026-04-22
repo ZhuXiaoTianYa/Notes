@@ -209,3 +209,56 @@ void Widget::on_pushButton_down_clicked()
 我们也可以通过代码发现，Qt中的qDebug对大多数Qt的内置类型都做了输出的重载，可以直接打印出QRect的数值
 
 而如果我们想要整个按钮移动可以用以下方式
+```C++
+// widget.cpp
+#include "widget.h"
+#include "ui_widget.h"
+
+Widget::Widget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::Widget)
+{
+    ui->setupUi(this);
+}
+
+Widget::~Widget()
+{
+    delete ui;
+}
+
+void Widget::on_pushButton_up_clicked()
+{
+    QRect rect=ui->pushButton->geometry();
+    qDebug()<<rect;
+    ui->pushButton->setGeometry(rect.x(),rect.y()-5,rect.width(),rect.height());
+}
+
+
+void Widget::on_pushButton_left_clicked()
+{
+    QRect rect=ui->pushButton->geometry();
+    qDebug()<<rect;
+    ui->pushButton->setGeometry(rect.x()-5,rect.y(),rect.width(),rect.height());
+}
+
+
+void Widget::on_pushButton_right_clicked()
+{
+    QRect rect=ui->pushButton->geometry();
+    qDebug()<<rect;
+    ui->pushButton->setGeometry(rect.x()+5,rect.y(),rect.width(),rect.height());
+}
+
+
+
+void Widget::on_pushButton_down_clicked()
+{
+    QRect rect=ui->pushButton->geometry();
+    qDebug()<<rect;
+    ui->pushButton->setGeometry(rect.x(),rect.y()+5,rect.width(),rect.height());
+}
+
+
+```
+
+![](assets/QWidget控件/file-20260423003327854.png)
