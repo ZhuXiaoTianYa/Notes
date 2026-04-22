@@ -365,3 +365,45 @@ void Widget::on_pushButton_reject_pressed()
 其中 `geometry()`, `width()`, `height()`, `rect()`, `size()` 则是按照**不包含 window frame** 的方式来计算的。
 
 当然，如果一个不是作为窗口的 widget，上述两类方式得到的结果是一致的。
+操作系统自带的
+
+
+![](assets/QWidget控件/file-20260423005553011.jpeg)
+
+
+
+一、包含 window frame 计算
+
+|API|说明|
+|---|---|
+|`x()`|获取横坐标，计算时包含 window frame|
+|`y()`|获取纵坐标，计算时包含 window frame|
+|`pos()`|返回 QPoint 对象，内含 x (), y (), setX (), setY () 等方法，计算时包含 window frame|
+|`frameSize()`|返回 QSize 对象，内含 width (), height (), setWidth (), setHeight () 等方法，计算时包含 window frame|
+|`frameGeometry()`|返回 QRect 对象（QPoint+QSize 结合体），可获取 x,y,width,size，计算时包含 window frame 对象|
+二、不包含 window frame 计算
+
+|API|说明|
+|---|---|
+|`width()`|获取宽度，计算时不包含 window frame|
+|`height()`|获取高度，计算时不包含 window frame|
+|`size()`|返回 QSize 对象，内含 width (), height (), setWidth (), setHeight () 等方法，计算时不包含 window frame|
+|`rect()`|返回 QRect 对象，可获取并设置 x,y,width,size，计算时不包含 window frame 对象|
+|`geometry()`|返回 QRect 对象，可获取 x,y,width,size，计算时不包含 window frame 对象|
+|`setGeometry()`|直接设置窗口位置和尺寸，可传入 x,y,width,height 或 QRect 对象，计算时不包含 window frame 对象|
+认真观察上面的表格，可以看到，其实这里的 API 有 `frameGeometry` 和 `geometry` 两个就足够完成所有的需求了。
+
+为什么要提供这么多功能重复的 API 呢？
+
+这个就涉及到 Qt API 的设计理念了：**尽量符合人的直觉**。
+
+举个例子，Qt 的 QVector，尾插元素操作，有以下方法：
+
+- `push_back`
+- `append`
+- `+=`
+- `<<`
+
+上述方法的效果都是等价的。即使不翻阅文档，单纯的凭借直觉就能把代码写对。
+
+
