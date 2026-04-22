@@ -262,3 +262,49 @@ void Widget::on_pushButton_down_clicked()
 ```
 
 ![](assets/QWidget控件/file-20260423003327854.png)
+
+
+**代码示例：一个表白程序**
+
+往界面上拖拽两个按钮和一个 Label。
+两个按钮的 objectName 分别为`pushButton_accept` 和 `pushButton_reject`
+Label 的 objectName 为 `label`
+
+控件中文本如下图所示。
+
+```C++
+// widget.cpp
+#include "widget.h"
+#include "ui_widget.h"
+
+Widget::Widget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::Widget)
+{
+    ui->setupUi(this);
+    srand(time(nullptr));
+}
+
+Widget::~Widget()
+{
+    delete ui;
+}
+
+void Widget::on_pushButton_accept_clicked()
+{
+    ui->label->setText("mua~~~");
+}
+
+
+void Widget::on_pushButton_reject_clicked()
+{
+    int width=this->geometry().width();
+    int height=this->geometry().height();
+    ui->pushButton_reject->move(rand()%width,rand()%height);
+}
+
+
+```
+
+![](assets/QWidget控件/file-20260423004700806.png)这样就能实现，当点击按钮时，按钮移动
+
