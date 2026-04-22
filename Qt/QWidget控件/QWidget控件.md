@@ -407,3 +407,54 @@ void Widget::on_pushButton_reject_pressed()
 上述方法的效果都是等价的。即使不翻阅文档，单纯的凭借直觉就能把代码写对。
 
 
+
+代码示例: 感受 geometry 和 frameGeometry 的区别 
+
+在界面上放置一个按钮。
+
+![](assets/QWidget控件/file-20260423010251788.png)
+
+```C++
+#include "widget.h"
+#include "ui_widget.h"
+
+Widget::Widget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::Widget)
+{
+    ui->setupUi(this);
+    QRect rect1=this->geometry();
+    QRect rect2=this->frameGeometry();
+    qDebug()<<rect1;
+    qDebug()<<rect2;
+}
+
+Widget::~Widget()
+{
+    delete ui;
+}
+
+void Widget::on_pushButton_clicked()
+{
+    QRect rect1=this->geometry();
+    QRect rect2=this->frameGeometry();
+    qDebug()<<rect1;
+    qDebug()<<rect2;
+}
+
+
+```
+
+![](assets/QWidget控件/file-20260423010351037.png)
+
+执行程序，可以看到，构造函数中，打印出的 geometry 和 frameGeometry 是相同的。
+
+但是在点击按钮时，打印的 geometry 和 frameGeometry 则存在差异。
+
+>在构造方法中，Widget 刚刚创建出来，还没有加入到对象树中。此时也就不具备 Window frame。
+
+> 在按钮的 slot 函数中，由于用户点击的时候，对象树已经构造好了，此时 Widget 已经具备了 Window frame，因此在位置和尺寸上均出现了差异。
+
+> 如果把上述代码修改成打印 pushButton 的 geometry 和 frameGeometry，结果就是完全相同的。因为 pushButton 并非是一个窗口。
+
+简单来说，当这段代码在构造函数中时，此时Widget对象正在构造，还没有被加入到window frame中。因此还看不到window frame的影响
