@@ -1,3 +1,4 @@
+## QWidget控件
 Qt中的各种控件都是继承自QWidget类，所以QWidget中的部分在Qt的控件体系中属于通用部分
 ![](assets/QWidget控件/file-20260401082241055.png)
 我们在Qt Creator右侧，可以看到QWidget的各种属性，并且在这里也能直接进行编辑
@@ -355,3 +356,12 @@ void Widget::on_pushButton_reject_pressed()
 对应的代码更麻烦一些（需要自定义类继承自 QPushButton，重写 `mouseMoveEvent` 方法）。此处暂时不展开。
 
 
+## window frame 的影响
+
+如果 widget 作为一个窗口（带有标题栏，最小化，最大化，关闭按钮），那么在计算尺寸和坐标的时候就有两种算法：**包含 window frame** 和 **不包含 window frame**。
+
+其中 `x()`, `y()`, `frameGeometry()`, `pos()`, `move()` 都是按照**包含 window frame** 的方式来计算的。
+
+其中 `geometry()`, `width()`, `height()`, `rect()`, `size()` 则是按照**不包含 window frame** 的方式来计算的。
+
+当然，如果一个不是作为窗口的 widget，上述两类方式得到的结果是一致的。
