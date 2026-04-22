@@ -124,3 +124,5 @@ void Widget::on_pushButton_clicked()
 
 ### geometry
 geometry的含义是几何，可以把geometry视为x,y,width,height四个属性的统称，也就是当前控件的位置和尺寸
+![](assets/QWidget控件/file-20260423000702592.jpeg)
+
