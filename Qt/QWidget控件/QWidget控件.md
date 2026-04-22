@@ -125,4 +125,12 @@ void Widget::on_pushButton_clicked()
 ### geometry
 geometry的含义是几何，可以把geometry视为x,y,width,height四个属性的统称，也就是当前控件的位置和尺寸
 ![](assets/QWidget控件/file-20260423000702592.jpeg)
+但是实际开发中，我们并不会直接使用这几个属性，而是通过一系列封装的方法来获取 / 修改.
+对于 Qt 的坐标系，不要忘记是一个 "左手坐标系". 其中坐标系的原点是当前元素的父元素的左上角.
 
+![](assets/QWidget控件/file-20260423000901644.png)
+
+| API                                                                            | 说明                                                                  |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| `geometry()`                                                                   | 获取到控件的位置和尺寸。返回结果是一个 QRect, 包含了 x, y, width, height. 其中 x,y 是左上角的坐标. |
+| `setGeometry(QRect)`<br><br>`setGeometry(int x, int y, int width, int height)` | 设置控件的位置和尺寸。可以直接设置一个 QRect, 也可以分四个属性单独设置.                            |
