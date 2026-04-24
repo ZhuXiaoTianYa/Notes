@@ -461,3 +461,19 @@ void Widget::on_pushButton_clicked()
 
 
 ### windowIcon
+
+|API|说明|
+|---|---|
+|`windowIcon()`|获取到控件的窗口图标。返回 `QIcon` 对象.|
+|`setWindowIcon(const QIcon& icon)`|设置控件的窗口图标.|
+
+**补充说明**
+
+同 `windowTitle`, 上述操作仅针对顶层 `widget` 有效.
+Qt 把各种涉及到的相关概念，都封装成了类 QIcon就表示一个图标
+
+---
+
+**代码示例标题**
+
+代码示例：设置窗口图标
