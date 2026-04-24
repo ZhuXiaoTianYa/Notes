@@ -493,6 +493,7 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
     QIcon icon("D:\\图片\\img.jpg");
+    // QIcon icon("D:/图片/img.jpg");
     setWindowIcon(icon);
 }
 
@@ -509,6 +510,6 @@ Widget::~Widget()
 - QIcon对象本身是否被释放，不影响图标最终的显示效果
 - QIcon也不支持对象树，无法给他绑定父对象
 - Qt中封装的这些类，都会有同名的头文件
-- `QIcon icon("D:\\图片\\img.jpg");` 
+- `QIcon icon("D:\\图片\\img.jpg");` 如果使用\ 在C++中会被视为转义字符，所以要用\\\\ ，
 
 
