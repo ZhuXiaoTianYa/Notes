@@ -356,7 +356,7 @@ void Widget::on_pushButton_reject_pressed()
 对应的代码更麻烦一些（需要自定义类继承自 QPushButton，重写 `mouseMoveEvent` 方法）。此处暂时不展开。
 
 
-## window frame 的影响
+#### window frame 的影响
 
 如果 widget 作为一个窗口（带有标题栏，最小化，最大化，关闭按钮），那么在计算尺寸和坐标的时候就有两种算法：**包含 window frame** 和 **不包含 window frame**。
 
@@ -458,3 +458,6 @@ void Widget::on_pushButton_clicked()
 > 如果把上述代码修改成打印 pushButton 的 geometry 和 frameGeometry，结果就是完全相同的。因为 pushButton 并非是一个窗口。
 
 简单来说，当这段代码在构造函数中时，此时Widget对象正在构造，还没有被加入到window frame中。因此还看不到window frame的影响
+
+
+### windowIcon
