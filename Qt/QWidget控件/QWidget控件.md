@@ -634,3 +634,6 @@ Widget::~Widget()
 }
 
 ```
+
+在项目的debug文件夹下可以看到qrc_resource.cpp文件
+![](assets/QWidget控件/file-20260425235313802.png)![](assets/QWidget控件/file-20260425235402047.png)
