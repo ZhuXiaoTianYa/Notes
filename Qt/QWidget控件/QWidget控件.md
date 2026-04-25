@@ -636,4 +636,11 @@ Widget::~Widget()
 ```
 
 在项目的debug文件夹下可以看到qrc_resource.cpp文件
-![](assets/QWidget控件/file-20260425235313802.png)![](assets/QWidget控件/file-20260425235402047.png)
+![](assets/QWidget控件/file-20260425235313802.png)
+
+
+这里的字节内容就是img.jpg里每个字节的数据
+当Qt项目进行编译的时候，这个cpp文件就被一起编译到exe中
+当exe程序运行的时候，上述图片的shu'k
+
+![](assets/QWidget控件/file-20260425235402047.png)
